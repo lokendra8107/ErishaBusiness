@@ -1,0 +1,21 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/ErishaBusiness/bin/Debug/netcoreapp3.1
+/ErishaBusiness/obj
+/ErishaBusiness.Core/.vs/Erisha.Core
+/ErishaBusiness.Core/bin
+/ErishaBusiness.Core/obj
+/ErishaBusiness.Data/.vs/Erisha.Data
+/ErishaBusiness.Data/bin
+/ErishaBusiness.Data/obj
+/ErishaBusiness.Models/.vs/Erisha.Models
+/ErishaBusiness.Models/bin
+/ErishaBusiness.Models/obj
+/ErishaBusiness.Repo/.vs/Erisha.Repo
+/ErishaBusiness.Repo/bin
+/ErishaBusiness.Repo/obj
+/ErishaBusiness.Services/.vs/Erisha.Services
+/ErishaBusiness.Services/bin
+/ErishaBusiness.Services/obj

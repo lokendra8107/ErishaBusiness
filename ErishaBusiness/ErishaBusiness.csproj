@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ErishaBusiness.Core\ErishaBusiness.Core.csproj" />
+    <ProjectReference Include="..\ErishaBusiness.Data\ErishaBusiness.Data.csproj" />
+    <ProjectReference Include="..\ErishaBusiness.Models\ErishaBusiness.Models.csproj" />
+    <ProjectReference Include="..\ErishaBusiness.Repo\ErishaBusiness.Repo.csproj" />
+    <ProjectReference Include="..\ErishaBusiness.Services\ErishaBusiness.Services.csproj" />
+  </ItemGroup>
+
+</Project>
