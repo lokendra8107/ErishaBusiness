@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="7.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ErishaBusiness.Core\ErishaBusiness.Core.csproj" />
     <ProjectReference Include="..\ErishaBusiness.Data\ErishaBusiness.Data.csproj" />
     <ProjectReference Include="..\ErishaBusiness.Models\ErishaBusiness.Models.csproj" />
