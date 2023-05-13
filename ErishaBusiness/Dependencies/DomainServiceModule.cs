@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using ErishaBusiness.Repo.CategoryRepository;
+using ErishaBusiness.Services;
 using Microsoft.Extensions.Configuration;
 
 namespace ErishaBusiness.Dependencies
@@ -26,6 +27,7 @@ namespace ErishaBusiness.Dependencies
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<CategoryRepository>().As<ICategoryRepository>();
+            builder.RegisterType<CategoryService>().As<ICategoryService>();
         }
     }
 }

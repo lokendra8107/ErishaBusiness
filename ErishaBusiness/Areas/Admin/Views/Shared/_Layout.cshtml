@@ -12,8 +12,18 @@
     <link rel="stylesheet" href="~/admin/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
     <link rel="stylesheet" href="~/admin/css/style.css">
     <link rel="shortcut icon" href="~/admin/images/favicon.png" />
+    <script src="~/admin/datatables/jquery.min.js"></script>
+    <link href="~/admin/datatables/datatables.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/admin/datatables/responsive.bootstrap.min.css" rel="stylesheet" />
+    <script src="~/admin/datatables/jquery.datatables.js"></script>
+    <script src="~/admin/datatables/datatables.bootstrap4.min.js"></script>
+    <link href="~/admin/css/custom.css" rel="stylesheet" />
+    <link href="~/admin/sweetalert/sweetalert2.min.css" rel="stylesheet" />
+    <script src="~/admin/sweetalert/sweetalert2.all.min.js"></script>
+    <script src="~/admin/pagesscript/commonscript.js"></script>
 </head>
 <body>
+    <div class="overlay"></div>
     <div class="container-scroller">
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="navbar-brand-wrapper d-flex justify-content-center">
@@ -53,15 +63,15 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/admin">
                             <i class="mdi mdi-home menu-icon"></i>
                             <span class="menu-title">Dashboard</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="admin/category">
-                            <i class="mdi mdi-view-headline menu-icon"></i>
-                            <span class="menu-title">Form elements</span>
+                        <a class="nav-link" href="/admin/category">
+                            <i class="mdi mdi-chart-pie menu-icon"></i>
+                            <span class="menu-title">Category</span>
                         </a>
                     </li>
                 </ul>

@@ -33,7 +33,7 @@ namespace ErishaBusiness.Services
         public static string Token => _configuration["Secret"];
 
         public static string AssetsDomain => _configuration["AssetsDomain"];
-        public static string SharedFolder => _configuration["SharedFolder"];
+        public static string ImageFolder => _configuration["ImageFolder"];
         public static string SharedReviewFolder => _configuration["SharedReviewFolder"];
         public static string Chippertext => _configuration["Chippertext"];
         public static string DefaultTimeZoneId => _configuration["DefaultTimeZoneId"];

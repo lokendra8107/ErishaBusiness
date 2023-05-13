@@ -1,12 +1,15 @@
 using Autofac;
 using ErishaBusiness.Dependencies;
 using ErishaBusiness.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -25,6 +28,7 @@ namespace ErishaBusiness
         }
 
         public IConfiguration Configuration { get; }
+        IWebHostEnvironment _webHostEnvironment { get; set; }
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -54,6 +58,31 @@ namespace ErishaBusiness
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            #region[START : JWT TOKEN USES , AUTHENTICATION AND AUTHORIZATION]
+            services.AddAuthentication(auth =>
+            {
+                auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                auth.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(token =>
+             {
+                 token.RequireHttpsMetadata = false;
+                 token.SaveToken = true;
+                 token.TokenValidationParameters = new TokenValidationParameters
+                 {
+                     ValidateIssuerSigningKey = true,
+                     IssuerSigningKey = new SymmetricSecurityKey(key),
+                     ValidateIssuer = true,
+                     ValidIssuer = SiteKeys.Domain,
+                     ValidateAudience = true,
+                     ValidAudience = SiteKeys.ApiDomain,
+                     RequireExpirationTime = true,
+                     ValidateLifetime = true,
+                     ClockSkew = TimeSpan.FromDays(1)
+                 };
+             });
+            #endregion
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -71,26 +100,39 @@ namespace ErishaBusiness
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
+            app.UseSession();
+            #region[START : JWT TOKEN USES , AUTHENTACTION AND AUTHORIZATION]
+            app.Use(async (context, next) =>
+            {
+                var JWToken = context.Session.GetString("JWToken");
+                if (!string.IsNullOrEmpty(JWToken))
+                {
+                    context.Request.Headers.Add("Authorization", "Bearer " + JWToken);
+                }
+                await next();
+            });
+            app.UseAuthentication();
             app.UseAuthorization();
+            #endregion
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapAreaControllerRoute(
                   name: "Admin",
                   areaName: "Admin",
-                  pattern: "Admin/{controller=Home}/{action=Index}");
+                  pattern: "Admin/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
                 endpoints.MapRazorPages();
             });
-         
+
         }
 
-        //public void ConfigureContainer(ContainerBuilder builder)
-        //{
-        //    builder.RegisterModule(new DomainServiceModule(Configuration));
-        //}
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.RegisterModule(new DomainServiceModule(Configuration));
+        }
     }
 }

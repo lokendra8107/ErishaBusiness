@@ -5,10 +5,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\admin\datatables\jquery.dataTables.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\admin\datatables\jquery.datatables.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Autofac" Version="7.0.1" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.15" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.5" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Linq.Dynamic" Version="1.0.6" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,6 +28,10 @@
     <ProjectReference Include="..\ErishaBusiness.Models\ErishaBusiness.Models.csproj" />
     <ProjectReference Include="..\ErishaBusiness.Repo\ErishaBusiness.Repo.csproj" />
     <ProjectReference Include="..\ErishaBusiness.Services\ErishaBusiness.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\MainImages\" />
   </ItemGroup>
 
 </Project>

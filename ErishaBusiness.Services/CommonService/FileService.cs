@@ -9,7 +9,7 @@ namespace ErishaBusiness.Services.CommonService
 {
     public class FileService
     {
-        private string sharedDirectoryPath = SiteKeys.SharedFolder;
+        private string sharedDirectoryPath = SiteKeys.ImageFolder;
         private string assetsUrl = SiteKeys.AssetsDomain;
         public List<string> SaveFile(List<IFormFile> files, string subDirectory ,string imgPrefix=null)
         {

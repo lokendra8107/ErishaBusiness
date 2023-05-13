@@ -1,0 +1,20 @@
+﻿.overlay {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background: rgba(255,255,255,0.8) url("/images/loader.gif") center no-repeat;
+}
+
+.reuiredValidateInput {
+    border: 1px solid #9f0b02;
+}
+
+.reuiredValidateMessage {
+    color: #9f0b02;
+    display: none;
+    font-size: 12px;
+}
