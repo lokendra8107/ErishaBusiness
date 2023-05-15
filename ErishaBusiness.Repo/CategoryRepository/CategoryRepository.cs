@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ErishaBusiness.Repo.CategoryRepository
+namespace ErishaBusiness.Repo
 {
     public class CategoryRepository : BaseRepository, ICategoryRepository
     {

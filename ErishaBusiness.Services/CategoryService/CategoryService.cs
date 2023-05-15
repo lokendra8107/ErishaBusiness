@@ -1,5 +1,5 @@
 ﻿using ErishaBusiness.Data.DTOS;
-using ErishaBusiness.Repo.CategoryRepository;
+using ErishaBusiness.Repo;
 using System;
 using System.Collections.Generic;
 using System.Text;

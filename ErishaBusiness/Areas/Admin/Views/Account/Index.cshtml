@@ -1,4 +1,7 @@
-﻿@{
+﻿@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+@model ErishaBusiness.Data.DTOS.LoginDetailDto;
+
+@{
     Layout = null;
 }
 
@@ -9,10 +12,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Erisha Business Admin</title>
+    <link href="~/admin/css/custom.css" rel="stylesheet" asp-append-version="true" />
     <link rel="stylesheet" href="~/admin/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="~/admin/vendors/base/vendor.bundle.base.css">
     <link rel="stylesheet" href="~/admin/css/style.css">
     <link rel="shortcut icon" href="~/admin/images/favicon.png" />
+  
 </head>
 
 <body>
@@ -27,42 +32,47 @@
                             </div>
                             <h4>Hello! let's get started</h4>
                             <h6 class="font-weight-light">Sign in to continue.</h6>
-                            <form class="pt-3">
+
+                            <form method="post" asp-controller="Account" asp-action="Index" class="pt-3">
+                                <input type="hidden" asp-for="ReturnUrl"/>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username">
+                                    <input type="email" class="form-control form-control-lg" placeholder="Username" asp-for="Email">
+                                    <span asp-validation-for="Email" class="error"></span>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
+                                    <input type="password" class="form-control form-control-lg" placeholder="Password" asp-for="Password">
+                                    <span asp-validation-for="Password" class="error"></span>
                                 </div>
                                 <div class="my-2 d-flex justify-content-between align-items-center">
                                     <div class="form-check">
                                         <label class="form-check-label text-muted">
-                                            <input type="checkbox" class="form-check-input">
-                                            Keep me signed in
+                                            <input type="checkbox" class="form-check-input keepsignedin" asp-for="RememberMe">
+                                            Remember me
                                         </label>
                                     </div>
                                 </div>
                                 <div class="mt-3">
-                                    <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="~/admin/index.html">SIGN IN</a>
+                                    <input type="submit" value="SIGN IN" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" />
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- content-wrapper ends -->
         </div>
-        <!-- page-body-wrapper ends -->
     </div>
-    <!-- container-scroller -->
-    <!-- plugins:js -->
+  
     <script src="~/admin/vendors/base/vendor.bundle.base.js"></script>
-    <!-- endinject -->
-    <!-- inject:js -->
     <script src="~/admin/js/off-canvas.js"></script>
     <script src="~/admin/js/hoverable-collapse.js"></script>
+    <script src="~/admin/datatables/jquery.min.js"></script>
+    <link href="~/admin/sweetalert/sweetalert2.min.css" rel="stylesheet" />
+    <script src="~/admin/sweetalert/sweetalert2.all.min.js"></script>
+    <script>
+        var message = '@(Model.ErrorMessage)';
+    </script>
+    <script src="~/admin/pagesscript/account/login.js"></script>
     <script src="~/admin/js/template.js"></script>
-    <!-- endinject -->
 </body>
 
 </html>

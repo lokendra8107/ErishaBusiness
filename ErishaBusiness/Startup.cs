@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -75,12 +76,17 @@ namespace ErishaBusiness
                      ValidateIssuer = true,
                      ValidIssuer = SiteKeys.Domain,
                      ValidateAudience = true,
-                     ValidAudience = SiteKeys.ApiDomain,
+                     ValidAudience = SiteKeys.Domain,
                      RequireExpirationTime = true,
                      ValidateLifetime = true,
                      ClockSkew = TimeSpan.FromDays(1)
                  };
              });
+            services.AddAuthentication().AddCookie(options =>
+            {
+                options.LoginPath = "/admin/account";
+                options.LogoutPath = "/logout";
+            });
             #endregion
 
         }
@@ -100,6 +106,7 @@ namespace ErishaBusiness
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
+            app.UseCookiePolicy();
             app.UseSession();
             #region[START : JWT TOKEN USES , AUTHENTACTION AND AUTHORIZATION]
             app.Use(async (context, next) =>
@@ -113,6 +120,7 @@ namespace ErishaBusiness
             });
             app.UseAuthentication();
             app.UseAuthorization();
+
             #endregion
 
             app.UseEndpoints(endpoints =>
@@ -120,7 +128,7 @@ namespace ErishaBusiness
                 endpoints.MapAreaControllerRoute(
                   name: "Admin",
                   areaName: "Admin",
-                  pattern: "Admin/{controller=Home}/{action=Index}/{id?}");
+                  pattern: "Admin/{controller=Account}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

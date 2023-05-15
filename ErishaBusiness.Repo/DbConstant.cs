@@ -11,5 +11,7 @@
         public const string InsertUpdateCategory = "InsertUpdateCategory";
         public const string GetAllCategory = "GetAllCategory";
         public const string DeleteCategoryById = "DeleteCategoryById";
+
+        public const string GetUserLoginDetail = "GetUserLoginDetail";
     }
 }

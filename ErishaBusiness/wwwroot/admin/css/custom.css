@@ -18,3 +18,10 @@
     display: none;
     font-size: 12px;
 }
+.field-validation-error {
+    color: #9f0b02;
+    font-size: 12px;
+}
+.input-validation-error {
+    border: 1px solid #9f0b02;
+}

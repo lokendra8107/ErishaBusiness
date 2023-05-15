@@ -1,5 +1,5 @@
 ﻿using Autofac;
-using ErishaBusiness.Repo.CategoryRepository;
+using ErishaBusiness.Repo;
 using ErishaBusiness.Services;
 using Microsoft.Extensions.Configuration;
 
@@ -28,6 +28,8 @@ namespace ErishaBusiness.Dependencies
         {
             builder.RegisterType<CategoryRepository>().As<ICategoryRepository>();
             builder.RegisterType<CategoryService>().As<ICategoryService>();
+            builder.RegisterType<AccountRepository>().As<IAccountRepository>();
+            builder.RegisterType<AccountService>().As<IAccountService>();
         }
     }
 }

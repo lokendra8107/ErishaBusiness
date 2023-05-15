@@ -6,10 +6,16 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\admin\datatables\jquery.dataTables.js" />
+    <Content Remove="wwwroot\admin\pagesscript\account\login.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\admin\pagesscript\account\login.js" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="wwwroot\admin\datatables\jquery.datatables.js" />
+    <None Include="wwwroot\admin\pagesscript\account\login.js" />
   </ItemGroup>
 
   <ItemGroup>
