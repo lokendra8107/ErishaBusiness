@@ -32,7 +32,6 @@ namespace ErishaBusiness.Areas.Admin.CustomAttributes
             if (IsAuthenticated)
             {
                 bool flagClaim = false;
-                bool flagAgreement = false;
                 foreach (var item in _claim)
                 {
                     if (context.HttpContext.User.HasClaim(item, item) && Role.Admin == item)

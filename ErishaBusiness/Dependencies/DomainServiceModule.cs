@@ -30,6 +30,10 @@ namespace ErishaBusiness.Dependencies
             builder.RegisterType<CategoryService>().As<ICategoryService>();
             builder.RegisterType<AccountRepository>().As<IAccountRepository>();
             builder.RegisterType<AccountService>().As<IAccountService>();
+            builder.RegisterType<VoucherRepository>().As<IVoucherRepository>();
+            builder.RegisterType<VoucherService>().As<IVoucherService>();
+            builder.RegisterType<EmailTemplateRepository>().As<IEmailTemplateRepository>();
+            builder.RegisterType<EmailTemplateService>().As<IEmailTemplateService>();
         }
     }
 }

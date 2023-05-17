@@ -13,5 +13,12 @@
         public const string DeleteCategoryById = "DeleteCategoryById";
 
         public const string GetUserLoginDetail = "GetUserLoginDetail";
+
+        public const string InsertUpdateProductVoucher = "InsertUpdateProductVoucher";
+        public const string GetAllProductVoucher = "GetAllProductVoucher";
+        public const string DeleteProductVoucherById = "DeleteProductVoucherById";
+
+        public const string GetAllEmailTemplate = "GetAllEmailTemplate";
+        public const string UpdateEmailTemplate = "UpdateEmailTemplate";
     }
 }

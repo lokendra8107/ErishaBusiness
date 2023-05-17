@@ -57,8 +57,8 @@ namespace ErishaBusiness
 
             services.AddMvc(options => options.EnableEndpointRouting = false);
 
-            services.AddControllersWithViews();
-            services.AddRazorPages();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            //services.AddRazorPages();
 
             #region[START : JWT TOKEN USES , AUTHENTICATION AND AUTHORIZATION]
             services.AddAuthentication(auth =>

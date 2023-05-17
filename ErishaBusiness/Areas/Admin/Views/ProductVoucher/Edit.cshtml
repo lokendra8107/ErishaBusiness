@@ -1,0 +1,103 @@
+﻿@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+@model ErishaBusiness.Data.DTOS.ProductVoucherDto;
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Edit Category</h4>
+            <form method="post" asp-controller="ProductVoucher" asp-action="Edit" class="pt-3">
+                <div class="row">
+                    <input type="hidden" asp-for="Id"/> 
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Voucher Code</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" asp-for="VoucherCode" />
+                                <span asp-validation-for="VoucherCode" class="error"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Discount</label>
+                            <div class="col-sm-9 inputfieldValidateItem">
+                                <input type="text" class="form-control inputfieldValidate" asp-for="Discount" />
+                                <span asp-validation-for="Discount" class="error"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Start Date</label>
+                            <div class="col-sm-9">
+                                <input type="date" class="form-control" asp-for="StartDate" />
+                                <span asp-validation-for="StartDate" class="error"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">End Date</label>
+                            <div class="col-sm-9">
+                                <input type="date" class="form-control" asp-for="EndDate" />
+                                <span asp-validation-for="EndDate" class="error"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Voucher For</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" style="padding: 14px;" asp-for="VoucherType">
+                                    <option value="">Select Type</option>
+                                    <option value="1">Dashboard</option>
+                                    <option value="2">Image</option>
+                                    <option value="3">AnyWhere</option>
+                                </select>
+                                <span asp-validation-for="VoucherType" class="error"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-6 col-form-label">Description</label>
+                            <div class="col-sm-12">
+                                <textarea class="form-control" asp-for="Description"></textarea>
+                                <span asp-validation-for="Description" class="error"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" asp-for="IsActive">
+                                IsActive
+                                <i class="input-helper"></i>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" asp-for="IsVouncherInPercent">
+                                IsVoucher In Percent
+                                <i class="input-helper"></i>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" value="Submit" class="btn btn-primary me-2 saveCategorybtn" />
+                <a class="btn btn-light" href="/admin/productvoucher">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>

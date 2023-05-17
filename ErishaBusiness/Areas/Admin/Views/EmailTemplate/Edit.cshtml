@@ -1,0 +1,95 @@
+﻿@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+@model ErishaBusiness.Data.DTOS.EmailTemplateDto;
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Edit Email Template</h4>
+            <form method="post" asp-controller="EmailTemplate" asp-action="Edit" class="pt-3">
+                <div class="row">
+                    <input type="hidden" asp-for="Id"/> 
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Email Title</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" asp-for="EmailTitle" />
+                                <span asp-validation-for="EmailTitle" class="error"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Email Subject</label>
+                            <div class="col-sm-9 inputfieldValidateItem">
+                                <input type="text" class="form-control inputfieldValidate" asp-for="EmailSubject" />
+                                <span asp-validation-for="EmailSubject" class="error"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">EmailTo</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" asp-for="EmailTo" />
+                                <span asp-validation-for="EmailTo" class="error"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">EmailCC</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" asp-for="EmailCC" />
+                                <span asp-validation-for="EmailCC" class="error"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">EmailBCC</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" asp-for="EmailBCC" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Email From</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" asp-for="EmailFrom" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-6 col-form-label">Email Body</label>
+                            <div class="col-sm-12">
+                                <textarea id="editor" asp-for="EmailBody" class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" asp-for="IsActive">
+                                IsActive
+                                <i class="input-helper"></i>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" value="Submit" class="btn btn-primary me-2 saveCategorybtn" />
+                <a class="btn btn-light" href="/admin/emailtemplate">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="~/admin/pagesscript/ckeditor.js"></script>
+<script src="~/admin/pagesscript/emailtemplate/addedit.js"></script>

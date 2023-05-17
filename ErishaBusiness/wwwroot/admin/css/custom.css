@@ -25,3 +25,9 @@
 .input-validation-error {
     border: 1px solid #9f0b02;
 }
+.ck.ck-editor__main > .ck-editor__editable:not(.ck-focused) {
+    min-height: 300px;
+}
+.ck.ck-editor__main > .ck-editor__editable {
+    min-height: 300px;
+}

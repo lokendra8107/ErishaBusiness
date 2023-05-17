@@ -4,6 +4,11 @@ using System.Text;
 
 namespace ErishaBusiness.Data.DTOS
 {
+    public class EmailTemplateDetailDto
+    {
+        public int RowCounts { get; set; }
+        public List<EmailTemplateDto> EmailTemplates { get; set; }
+    }
     public partial class EmailTemplateDto
     {
         public int Id { get; set; }
