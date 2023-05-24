@@ -20,5 +20,11 @@
 
         public const string GetAllEmailTemplate = "GetAllEmailTemplate";
         public const string UpdateEmailTemplate = "UpdateEmailTemplate";
+
+        public const string InsertUpdateBannerLayoutDetail = "InsertBannerLayoutDetail";
+        public const string GetAllBannerLayoutDetail = "GetAllBannerLayoutDetail";
+        public const string DeleteBannerLayoutDetailById = "DeleteBannerLayoutDetail";
+
+        public const string GetCategories = "GetCategories";
     }
 }

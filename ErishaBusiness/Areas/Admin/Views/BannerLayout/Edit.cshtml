@@ -1,0 +1,87 @@
+﻿@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+@model ErishaBusiness.Data.DTOS.BannerLayoutDto;
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Edit BannerLayout</h4>
+            <form id="BannerLayoutForm" class="form-sample" method="post" enctype="multipart/form-data" asp-controller="BannerLayout" asp-action="SavebannerlayoutData">
+                <div class="row">
+                    <input type="hidden" asp-for="Id"/> 
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Title</label>
+                            <div class="col-sm-9 inputfieldValidateItem">
+                                <input type="text" class="form-control inputfieldValidate" asp-for="Title" />
+                                <span class="reuiredValidateMessage">*Title is required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Layout Position</label>
+                            <div class="col-sm-9 inputfieldValidateItem">
+                                <select class="form-control inputfieldValidate" style="padding: 14px;" asp-for="LayoutType">
+                                    <option value="">Select Position</option>
+                                    <option value="1">Top</option>
+                                    <option value="2">Middle</option>
+                                    <option value="3">Slight Middle</option>
+                                    <option value="4">Bottom</option>
+                                </select>
+                                <span class="reuiredValidateMessage">*Layout Position is required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Category</label>
+                            <div class="col-sm-9 inputfieldValidateItem">
+                                <select class="form-control inputfieldValidate" style="padding: 14px;" asp-for="CategoryId">
+                                    <option value="">Select Category</option>
+                                    @foreach (var items in @ViewBag.Categories)
+                                    {
+                                        <option value="@(items.Id)">@(items.CategoryName)</option>
+                                    }
+                                </select>
+                                <span class="reuiredValidateMessage">*Category is required</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                  
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Layout Image</label>
+                            <input type="file" name="ImageUpload" id="ImageUpload" onchange="ShowPreview(this)" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <img id="BannerLayoutPreviewImage" style="width:150px" src="@(Model.ImageUrl)" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" asp-for="IsActive">
+                                IsActive
+                                <i class="input-helper"></i>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary me-2 saveBannerLayoutbtn" onclick="SaveBannerLayoutData()">Submit</button>
+                <a class="btn btn-light" href="/admin/bannerlayout">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="~/admin/pagesscript/bannerlayout/addedit.js" asp-append-version="true"></script>

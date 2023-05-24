@@ -34,6 +34,8 @@ namespace ErishaBusiness.Dependencies
             builder.RegisterType<VoucherService>().As<IVoucherService>();
             builder.RegisterType<EmailTemplateRepository>().As<IEmailTemplateRepository>();
             builder.RegisterType<EmailTemplateService>().As<IEmailTemplateService>();
+            builder.RegisterType<BannerLayoutRepository>().As<IBannerLayoutRepository>();
+            builder.RegisterType<BannerLayoutService>().As<IBannerLayoutService>();
         }
     }
 }
