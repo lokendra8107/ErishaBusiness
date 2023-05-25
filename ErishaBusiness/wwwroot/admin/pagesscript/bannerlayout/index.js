@@ -18,8 +18,10 @@ $(document).ready(function () {
         "columns": [ 
             { "data": "id", "name": "Id", "autoWidth": true },
             { "data": "title", "name": "title", "autoWidth": true },
-            { "data": "layoutType", "name": "layoutType", "autoWidth": true },
-            { "data": "categoryId", "name": "categoryId", "autoWidth": true },
+            {
+                "bSortable": false, "bSearchable": false, "render": function (data, type, full, meta) { return (full.layoutType == 1 ? "Top" : (full.layoutType == 2 ? "Middle" : (full.layoutType == 3 ? "Slight Middle" : (full.layoutType == 4 ? "Bottom" : "")))); }
+            },
+            { "data": "categoryName", "name": "categoryName", "autoWidth": true }, 
             {
                 "bSortable": false, "bSearchable": false, "render": function (data, type, full, meta) { return '<img src="' + full.imageUrl + '"/>'; }
             },

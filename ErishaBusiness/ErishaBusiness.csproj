@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\frontweb\**" />
+    <Content Remove="wwwroot\frontweb\**" />
+    <EmbeddedResource Remove="wwwroot\frontweb\**" />
+    <None Remove="wwwroot\frontweb\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="wwwroot\admin\datatables\jquery.dataTables.js" />
     <Content Remove="wwwroot\admin\pagesscript\account\login.js" />
   </ItemGroup>
@@ -15,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\Shared\Components\Header\Default.cshtml" />
     <None Include="wwwroot\admin\datatables\jquery.datatables.js" />
     <None Include="wwwroot\admin\pagesscript\account\login.js" />
   </ItemGroup>

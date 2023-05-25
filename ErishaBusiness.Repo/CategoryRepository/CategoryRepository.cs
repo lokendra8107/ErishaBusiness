@@ -80,5 +80,11 @@ namespace ErishaBusiness.Repo
             });
             return results;
         }
+
+        public async Task<IEnumerable<CategoryDto>> GetAllCategoriesList()
+        {
+            var results = await GetAll<CategoryDto>(DbConstant.GetAllCategoryList);
+            return results;
+        }
     }
 }

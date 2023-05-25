@@ -84,5 +84,11 @@ namespace ErishaBusiness.Repo
             });
             return results;
         }
+
+        public async Task<IEnumerable<ProductVoucherDto>> GetAllVouchersList()
+        {
+            var results = await GetAll<ProductVoucherDto>(DbConstant.GetAllVouchersList);
+            return results;
+        }
     }
 }

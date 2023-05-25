@@ -12,5 +12,6 @@ namespace ErishaBusiness.Repo
         Task<int> DeleteCategoryById(int Id);
         Task<CategoryDto> GetCategoryById(int Id);
         int InsertUpdateCategory(CategoryDto objCategory);
+        Task<IEnumerable<CategoryDto>> GetAllCategoriesList();
     }
 }

@@ -39,5 +39,11 @@ namespace ErishaBusiness.Services
             var result = _categoryRepository.InsertUpdateCategory(objCategory);
             return result;
         }
+
+        public async Task<IEnumerable<CategoryDto>> GetAllCategoriesList()
+        {
+            var result = await _categoryRepository.GetAllCategoriesList();
+            return result;
+        }
     }
 }

@@ -17,6 +17,7 @@
         public const string InsertUpdateProductVoucher = "InsertUpdateProductVoucher";
         public const string GetAllProductVoucher = "GetAllProductVoucher";
         public const string DeleteProductVoucherById = "DeleteProductVoucherById";
+        public const string GetAllVouchersList = "GetAllVoucherList";
 
         public const string GetAllEmailTemplate = "GetAllEmailTemplate";
         public const string UpdateEmailTemplate = "UpdateEmailTemplate";
@@ -26,5 +27,8 @@
         public const string DeleteBannerLayoutDetailById = "DeleteBannerLayoutDetail";
 
         public const string GetCategories = "GetCategories";
+        public const string GetAllCategoryList = "GetAllCategoryList";
+
+        public const string GetAllItemModifiedDate = "GetAllItemModifiedDate";
     }
 }

@@ -12,5 +12,6 @@ namespace ErishaBusiness.Services
         Task<int> DeleteProductVoucherById(int Id);
         Task<ProductVoucherDto> GetProductVoucherByID(int Id);
         int InsertUpdateProductVoucher(ProductVoucherDto objCategory);
+        Task<IEnumerable<ProductVoucherDto>> GetAllVouchersList();
     }
 }

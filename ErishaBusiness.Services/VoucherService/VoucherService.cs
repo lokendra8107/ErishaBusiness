@@ -39,5 +39,11 @@ namespace ErishaBusiness.Services
             var result = _voucherRepository.InsertUpdateProductVoucher(objCategory);
             return result;
         }
+
+        public Task<IEnumerable<ProductVoucherDto>> GetAllVouchersList()
+        {
+            var result = _voucherRepository.GetAllVouchersList();
+            return result;
+        }
     }
 }

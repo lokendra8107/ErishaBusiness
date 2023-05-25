@@ -1,48 +1,45 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ErishaBusiness</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ErishaBusiness</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="keywords" content="HTML5 Template" />
+        <meta name="description" content="My Shop Multipurpose Responsive HTML Template" />
+        <meta name="author" content="webvillee.com"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>@ViewData["Title"] - ErishaBusiness</title>
+        <link rel="shortcut icon" href="~/assets/img/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="~/assets/img/favicon.ico" type="image/x-icon">
+        <link href="main.css" rel="stylesheet">
+        <link href="~/assets/css/switcher.css" rel="stylesheet">
+        <link href="~/assets/css/color.css" rel="stylesheet" id="colors">
+    </head>
+    <body>
+        <!--//==Preloader Start==//-->
+        <div class="preloader">
+            <div class="cssload-container">
+                <div class="cssload-loading"><i></i><i></i><i></i><i></i></div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - ErishaBusiness - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
-</body>
+    @await Component.InvokeAsync("Header")
+         @RenderBody()
+
+
+
+        @RenderSection("Scripts", required: false)
+        <script src="~/assets/js/jquery.min.js"></script>
+        <script src="~/assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="~/assets/plugins/menu/js/hover-dropdown-menu.js"></script> 
+        <script type="text/javascript" src="~/assets/plugins/menu/js/jquery.hover-dropdown-menu-addon.js"></script>	
+        <script src="~/assets/plugins/owl-carousel/js/owl.carousel.js"></script>	
+        <script type="text/javascript" src="~/assets/plugins/counter/js/jquery.countTo.js"></script> 
+        <script type="text/javascript" src="~/assets/plugins/counter/js/jquery.appear.js"></script>  	
+        <script src="~/assets/plugins/mixitup/js/jquery.mixitup.js"></script>	  
+        <script src="~/assets/plugins/fancymedia/js/jquery.fancybox.pack.js"></script>
+        <script src="~/assets/plugins/fancymedia/js/jquery.fancybox-media.js"></script> 
+        <script type="text/javascript" src="~/assets/plugins/revslider/js/jquery.themepunch.tools.min.js"></script>
+        <script type="text/javascript" src="~/assets/plugins/revslider/js/jquery.themepunch.revolution.min.js"></script>
+        <script type="text/javascript" src="~/assets/js/switcher.js"></script> 
+        <script type="text/javascript" src="~/assets/js/main.js"></script> 
+    </body>
 </html>

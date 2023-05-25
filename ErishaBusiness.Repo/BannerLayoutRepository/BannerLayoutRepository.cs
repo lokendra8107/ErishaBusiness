@@ -95,5 +95,11 @@ namespace ErishaBusiness.Repo
             var results = await GetAll<BannerLayoutCategoryDto>(DbConstant.GetCategories);
             return results;
         }
+
+        public AllRecordDateModifiedDetailDto GetAllRecordDateModifiedDetail()
+        {
+            var results = GetQueryFirst<AllRecordDateModifiedDetailDto>(DbConstant.GetAllItemModifiedDate);
+            return results;
+        }
     }
 }

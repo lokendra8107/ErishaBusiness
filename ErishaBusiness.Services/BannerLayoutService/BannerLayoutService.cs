@@ -45,5 +45,11 @@ namespace ErishaBusiness.Services
             var results = await _bannerLayoutRepository.GetCategories();
             return results;
         }
+
+        public AllRecordDateModifiedDetailDto GetAllRecordDateModifiedDetail()
+        {
+            var results = _bannerLayoutRepository.GetAllRecordDateModifiedDetail();
+            return results;
+        }
     }
 }

@@ -339,6 +339,18 @@ namespace ErishaBusiness.Repo
         }
 
         /// <summary>
+        /// Gets the query first asynchronous.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="spName">Name of the sp.</param>
+        /// <param name="param">The parameter.</param>
+        /// <returns></returns>
+        public T GetQueryFirst<T>(string spName, object param = null)
+        {
+            return _dbConnection.QueryFirst<T>(spName, param, _dbTransaction, commandTimeout: CommandTimeout, CommandType.StoredProcedure);
+        }
+
+        /// <summary>
         /// Updates records
         /// </summary>
         /// <typeparam name="T"></typeparam>
