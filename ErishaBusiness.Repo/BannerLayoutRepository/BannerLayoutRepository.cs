@@ -101,5 +101,11 @@ namespace ErishaBusiness.Repo
             var results = GetQueryFirst<AllRecordDateModifiedDetailDto>(DbConstant.GetAllItemModifiedDate);
             return results;
         }
-    }
+
+		public async Task<IEnumerable<BannerLayoutListDto>> GetAllBannerLayout()
+		{
+			var results = await GetAll<BannerLayoutListDto>(DbConstant.GetAllBannerLayout);
+			return results;
+		}
+	}
 }

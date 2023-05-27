@@ -1,3 +1,11 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Http
+@using ErishaBusiness.Data.DTOS
+
+@model List<BannerLayoutDto>
+
+@{
     ViewData["Title"] = "Home Page";
 }
+<section class="w3l-banner-slider-main">
+    @await Component.InvokeAsync("Banner")
+</section>

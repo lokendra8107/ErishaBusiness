@@ -14,5 +14,7 @@ namespace ErishaBusiness.Services
         int InsertUpdateDetail(BannerLayoutDto objBannerLayout);
         Task<IEnumerable<BannerLayoutCategoryDto>> GetCategories();
         AllRecordDateModifiedDetailDto GetAllRecordDateModifiedDetail();
-    }
+        Task<IEnumerable<BannerLayoutListDto>> GetAllBannerLayout();
+
+	}
 }

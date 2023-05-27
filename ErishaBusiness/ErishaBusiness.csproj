@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Shared\Components\Banner\Default.cshtml" />
     <Content Remove="wwwroot\admin\datatables\jquery.dataTables.js" />
     <Content Remove="wwwroot\admin\pagesscript\account\login.js" />
   </ItemGroup>
@@ -22,9 +23,27 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\Shared\Components\Banner\Default.cshtml" />
     <None Include="Views\Shared\Components\Header\Default.cshtml" />
     <None Include="wwwroot\admin\datatables\jquery.datatables.js" />
     <None Include="wwwroot\admin\pagesscript\account\login.js" />
+    <None Include="wwwroot\assets\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\assets\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\assets\js\all.js" />
+    <None Include="wwwroot\assets\js\app.js" />
+    <None Include="wwwroot\assets\js\bootstrap.min.js" />
+    <None Include="wwwroot\assets\js\imagezoom.js" />
+    <None Include="wwwroot\assets\js\jquery-2.1.4.min.js" />
+    <None Include="wwwroot\assets\js\jquery-3.3.1.min.js" />
+    <None Include="wwwroot\assets\js\jquery-ui.js" />
+    <None Include="wwwroot\assets\js\jquery.flexslider.js" />
+    <None Include="wwwroot\assets\js\jquery.magnific-popup.js" />
+    <None Include="wwwroot\assets\js\jquery.prettyPhoto.js" />
+    <None Include="wwwroot\assets\js\jquery.quicksand.js" />
+    <None Include="wwwroot\assets\js\minicart.js" />
+    <None Include="wwwroot\assets\js\popper.min.js" />
+    <None Include="wwwroot\assets\js\script.js" />
+    <None Include="wwwroot\assets\js\swiper.js" />
   </ItemGroup>
 
   <ItemGroup>

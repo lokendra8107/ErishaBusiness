@@ -40,6 +40,7 @@ namespace ErishaBusiness.ViewComponents
             {
                 objCategory = new List<CategoryDto>();
                 objCategory = _categoryService.GetAllCategoriesList().Result.ToList();
+                objCategory.ForEach(x => x.ImagePath = SiteKeys.AssetsDomain + x.ImagePath);
                 var cacheExpiryOptions = new MemoryCacheEntryOptions
                 {
                     Priority = CacheItemPriority.Normal

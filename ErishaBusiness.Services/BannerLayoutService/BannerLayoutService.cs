@@ -51,5 +51,11 @@ namespace ErishaBusiness.Services
             var results = _bannerLayoutRepository.GetAllRecordDateModifiedDetail();
             return results;
         }
-    }
+
+		public Task<IEnumerable<BannerLayoutListDto>> GetAllBannerLayout()
+		{
+			var results = _bannerLayoutRepository.GetAllBannerLayout();
+			return results;
+		}
+	}
 }

@@ -1,5 +1,6 @@
 using Autofac;
 using ErishaBusiness.Dependencies;
+using ErishaBusiness.ImageResizer.Helpers;
 using ErishaBusiness.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -8,8 +9,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Net.Http.Headers;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -23,9 +27,11 @@ namespace ErishaBusiness
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private readonly IWebHostEnvironment _env;
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
+            _env = env;
         }
 
         public IConfiguration Configuration { get; }
@@ -33,6 +39,10 @@ namespace ErishaBusiness
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IFileProvider>(_ => new PhysicalFileProvider(_env.WebRootPath ?? _env.ContentRootPath));
+            services.AddMemoryCache();
+            services.AddImageResizer();
+
             #region[START : APPLICATION KEYS FETCH FROM APPSETTING.JSON]
             SiteKeys.Configure(Configuration.GetSection("AppSettings"));
             var key = Encoding.ASCII.GetBytes(SiteKeys.Token);
@@ -89,6 +99,7 @@ namespace ErishaBusiness
             });
             #endregion
 
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -104,7 +115,16 @@ namespace ErishaBusiness
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            app.UseImageResizer();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                OnPrepareResponse = ctx =>
+                {
+                    const int durationInSeconds = 60 * 60 * 24 * 365;
+                    ctx.Context.Response.Headers[HeaderNames.CacheControl] =
+                        "public,max-age=" + durationInSeconds;
+                }
+            });
             app.UseRouting();
             app.UseCookiePolicy();
             app.UseSession();

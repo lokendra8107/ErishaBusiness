@@ -1,6 +1,8 @@
 ﻿using Autofac;
+using Autofac.Core;
 using ErishaBusiness.Repo;
 using ErishaBusiness.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 
 namespace ErishaBusiness.Dependencies

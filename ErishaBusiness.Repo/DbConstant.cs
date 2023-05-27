@@ -25,10 +25,13 @@
         public const string InsertUpdateBannerLayoutDetail = "InsertBannerLayoutDetail";
         public const string GetAllBannerLayoutDetail = "GetAllBannerLayoutDetail";
         public const string DeleteBannerLayoutDetailById = "DeleteBannerLayoutDetail";
+        public const string GetAllBannerLayout = "GetAllBannerLayout";
 
         public const string GetCategories = "GetCategories";
         public const string GetAllCategoryList = "GetAllCategoryList";
 
         public const string GetAllItemModifiedDate = "GetAllItemModifiedDate";
+
+        
     }
 }

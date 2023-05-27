@@ -1,45 +1,35 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="keywords" content="HTML5 Template" />
-        <meta name="description" content="My Shop Multipurpose Responsive HTML Template" />
-        <meta name="author" content="webvillee.com"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <title>@ViewData["Title"] - ErishaBusiness</title>
-        <link rel="shortcut icon" href="~/assets/img/favicon.ico" type="image/x-icon">
-        <link rel="icon" href="~/assets/img/favicon.ico" type="image/x-icon">
-        <link href="main.css" rel="stylesheet">
-        <link href="~/assets/css/switcher.css" rel="stylesheet">
-        <link href="~/assets/css/color.css" rel="stylesheet" id="colors">
-    </head>
-    <body>
-        <!--//==Preloader Start==//-->
-        <div class="preloader">
-            <div class="cssload-container">
-                <div class="cssload-loading"><i></i><i></i><i></i><i></i></div>
-            </div>
-        </div>
-    @await Component.InvokeAsync("Header")
-         @RenderBody()
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="My Shop Multipurpose Responsive HTML Template" />
+    <meta name="author" content="webvillee.com" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>@ViewData["Title"] - ErishaBusiness</title>
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="~/assets/css/style-starter.css">
+    <!-- Template CSS -->
+    <link href="//fonts.googleapis.com/css?family=Oswald:300,400,500,600&display=swap" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,900&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+</head>
+<body>
+	<section class="w3l-banner-slider-main">
+		@await Component.InvokeAsync("Header")
+	</section>
+	@RenderBody()
 
+    @RenderSection("Scripts", required: false)
 
-
-        @RenderSection("Scripts", required: false)
-        <script src="~/assets/js/jquery.min.js"></script>
-        <script src="~/assets/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="~/assets/plugins/menu/js/hover-dropdown-menu.js"></script> 
-        <script type="text/javascript" src="~/assets/plugins/menu/js/jquery.hover-dropdown-menu-addon.js"></script>	
-        <script src="~/assets/plugins/owl-carousel/js/owl.carousel.js"></script>	
-        <script type="text/javascript" src="~/assets/plugins/counter/js/jquery.countTo.js"></script> 
-        <script type="text/javascript" src="~/assets/plugins/counter/js/jquery.appear.js"></script>  	
-        <script src="~/assets/plugins/mixitup/js/jquery.mixitup.js"></script>	  
-        <script src="~/assets/plugins/fancymedia/js/jquery.fancybox.pack.js"></script>
-        <script src="~/assets/plugins/fancymedia/js/jquery.fancybox-media.js"></script> 
-        <script type="text/javascript" src="~/assets/plugins/revslider/js/jquery.themepunch.tools.min.js"></script>
-        <script type="text/javascript" src="~/assets/plugins/revslider/js/jquery.themepunch.revolution.min.js"></script>
-        <script type="text/javascript" src="~/assets/js/switcher.js"></script> 
-        <script type="text/javascript" src="~/assets/js/main.js"></script> 
-    </body>
+    <script src="~/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="~/assets/js/jquery-2.1.4.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script>
+        $('#carouselExampleIndicators').carousel({
+            interval: 5000
+        });
+    </script>
+</body>
 </html>

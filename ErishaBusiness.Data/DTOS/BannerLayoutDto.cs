@@ -28,4 +28,14 @@ namespace ErishaBusiness.Data.DTOS
         public int Id { get; set; }
         public string CategoryName { get; set; }
     }
+
+    public class BannerLayoutListDto
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string ImageUrl { get; set; }
+        public int LayoutType { get; set; }
+        public int CategoryId { get; set; }
+        public bool IsActive { get; set; }
+    }
 }

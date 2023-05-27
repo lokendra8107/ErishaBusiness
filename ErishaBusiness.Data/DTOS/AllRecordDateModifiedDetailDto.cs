@@ -8,5 +8,6 @@ namespace ErishaBusiness.Data.DTOS
     {
         public DateTime? CategoryModified { get; set;}
         public DateTime? ProductVoucherModified { get; set; }
+        public DateTime? BannerLayoutModified { get; set; }
     }
 }

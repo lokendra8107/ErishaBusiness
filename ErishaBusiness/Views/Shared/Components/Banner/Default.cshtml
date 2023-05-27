@@ -1,0 +1,58 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor Accessor
+@using ErishaBusiness.Data.DTOS
+@model List<BannerLayoutListDto>
+
+<div class="bannerhny-content">
+    <div class="content-baner-inf">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                @{
+                    var rowIndex = 0;
+                }
+                @foreach (var item in Model.Where(x => x.LayoutType == 1))
+                {
+                    <li data-target="#carouselExampleIndicators" data-slide-to="@(rowIndex)" class="@(rowIndex == 0 ?"active":"")"></li>
+                    rowIndex++;
+                }
+            </ol>
+            <div class="carousel-inner">
+                @{
+                    var rowIndex1 = 0;
+                }
+                @foreach (var item in Model.Where(x => x.LayoutType == 1))
+                {
+                    <div class="carousel-item @(rowIndex1 == 0 ?"active":"")" style="background: url(@(item.ImageUrl)) no-repeat center;">
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h3>
+                                    @(item.Title)
+                                </h3>
+                                <a href="#" class="shop-button btn">
+                                    Shop Now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    rowIndex1++;
+                }
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+    <div class="right-banner" style="background: url(@(Model.Where(x=>x.LayoutType == 3).Select(x=> x.ImageUrl).FirstOrDefault())?w=500) no-repeat center;">
+        <div class="right-1">
+            <h4>
+                @(Model.Where(x => x.LayoutType == 3).Select(x => x.Title).FirstOrDefault())
+            </h4>
+        </div>
+    </div>
+
+</div>
