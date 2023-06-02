@@ -4016,7 +4016,6 @@ a.read-more-btn2.btn:hover {
 
 .w3l-banner-slider-main .bannerhny-content {
   display: grid;
-  grid-template-columns: 2fr 1fr;
   align-items: center;
 }
 

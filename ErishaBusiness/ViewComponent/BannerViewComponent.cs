@@ -33,7 +33,7 @@ namespace ErishaBusiness.ViewComponents
 			CheckDeviceInfo();
 			AllRecordDateModifiedDetailDto objItem = new AllRecordDateModifiedDetailDto();
 			objItem = _bannerLayoutService.GetAllRecordDateModifiedDetail();
-
+			DashboardHeaderDto objDashboard = new DashboardHeaderDto();
 			var cacheKey = "headerbannerlayout" + objItem.BannerLayoutModified;
 			if (!_memoryCache.TryGetValue(cacheKey, out List<BannerLayoutListDto> objBanners))
 			{
@@ -47,7 +47,21 @@ namespace ErishaBusiness.ViewComponents
 				_memoryCache.Set(cacheKey, objBanners, cacheExpiryOptions);
 			}
 
-			return View(objBanners);
+			var headerbannerCategoriesKey = "headerbannerCategories" + objItem.BannerLayoutModified;
+			if (!_memoryCache.TryGetValue(headerbannerCategoriesKey, out List<CategoryDto> objCategory))
+			{
+				objCategory = new List<CategoryDto>();
+				objCategory = _categoryService.GetAllCategoriesList().Result.ToList();
+				objCategory.ForEach(x => x.ImagePath = SiteKeys.AssetsDomain + x.ImagePath);
+				var cacheExpiryOptions = new MemoryCacheEntryOptions
+				{
+					Priority = CacheItemPriority.Normal
+				};
+				_memoryCache.Set(headerbannerCategoriesKey, objBanners, cacheExpiryOptions);
+			}
+			objDashboard.BannerLayoutList = objBanners;
+			objDashboard.CategoryDtoList = objCategory;
+			return View(objDashboard);
 		}
 
 		public void CheckDeviceInfo()

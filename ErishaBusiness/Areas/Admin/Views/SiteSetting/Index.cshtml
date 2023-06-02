@@ -1,0 +1,131 @@
+﻿@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+@model ErishaBusiness.Data.DTOS.SiteSettingDto;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Edit SiteSetting</h4>
+            <form id="SiteSettingForm" class="form-sample" method="post" enctype="multipart/form-data" asp-controller="SiteSetting" asp-action="SaveSiteSettingData">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Logo</label>
+                            <input type="file" name="ImageUpload" id="ImageUpload" onchange="ShowPreview(this)" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <img id="SiteSettingPreviewImage" style="width:150px" src="@(Model.Logo)" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Fevicon Icon</label>
+                            <input type="file" name="FaviconImageUpload" id="FaviconImageUpload" onchange="ShowFaviconPreview(this)" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <img id="SiteSettingFaviconPreviewImage" style="width:150px" src="@(Model.Favicon)" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <input type="hidden" asp-for="Id" />
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Admin Email</label>
+                            <div class="col-sm-9 inputfieldValidateItem">
+                                <input type="text" class="form-control inputfieldValidate" asp-for="AdminEmail" />
+                                <span class="reuiredValidateMessage">*Admin Email is required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Phone</label>
+                            <div class="col-sm-9 inputfieldValidateItem">
+                                <input type="text" class="form-control inputfieldValidate" asp-for="Phone" />
+                                <span class="reuiredValidateMessage">*Phone is required</span>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Address</label>
+                            <div class="col-sm-9 inputfieldValidateItem">
+                                <input type="text" class="form-control inputfieldValidate" asp-for="Address" />
+                                <span class="reuiredValidateMessage">*Address is required</span>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">MailFrom Email</label>
+                            <div class="col-sm-9 inputfieldValidateItem">
+                                <input type="text" class="form-control inputfieldValidate" asp-for="MailFromEmail" />
+                                <span class="reuiredValidateMessage">*MailFrom Email is required</span>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Smtp Server</label>
+                            <div class="col-sm-9 inputfieldValidateItem">
+                                <input type="text" class="form-control inputfieldValidate" asp-for="SmtpServer" />
+                                <span class="reuiredValidateMessage">*Smtp Server is required</span>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Smtp UserName</label>
+                            <div class="col-sm-9 inputfieldValidateItem">
+                                <input type="text" class="form-control inputfieldValidate" asp-for="SmtpuserName" />
+                                <span class="reuiredValidateMessage">*Smtp UserName is required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Smtp User Password</label>
+                            <div class="col-sm-9 inputfieldValidateItem">
+                                <input type="text" class="form-control inputfieldValidate" asp-for="SmtpuserPassword" />
+                                <span class="reuiredValidateMessage">*Smtp User Password is required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Smtp Port</label>
+                            <div class="col-sm-9 inputfieldValidateItem">
+                                <input type="text" class="form-control inputfieldValidate" asp-for="SmtpPort" />
+                                <span class="reuiredValidateMessage">*Smtp Port is required</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" asp-for="IsActive">
+                                IsActive
+                                <i class="input-helper"></i>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary me-2 saveSiteSettingbtn" onclick="SaveSiteSettingData()">Submit</button>
+                <a class="btn btn-light" href="/admin/sitesetting">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="~/admin/pagesscript/sitesetting/addedit.js" asp-append-version="true"></script>

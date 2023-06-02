@@ -1,0 +1,85 @@
+﻿@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+@model ErishaBusiness.Data.DTOS.CmsPageDto;
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Edit cmspage</h4>
+            <form method="post" asp-controller="CmsPage" asp-action="Edit" class="pt-3">
+                <div class="row">
+                    <input type="hidden" asp-for="Id"/> 
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" asp-for="Name" />
+                                <span asp-validation-for="Name" class="error"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Title</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" asp-for="Title" />
+                                <span asp-validation-for="Title" class="error"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Meta Title</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" asp-for="MetaTitle"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Meta Description</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" asp-for="MetaDescription"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Meta Keyword</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" asp-for="MetaKeyword"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-6 col-form-label">Page Content</label>
+                            <div class="col-sm-12">
+                                <textarea id="editor" asp-for="PageContent" class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" asp-for="IsActive">
+                                IsActive
+                                <i class="input-helper"></i>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" value="Submit" class="btn btn-primary me-2 saveCategorybtn" />
+                <a class="btn btn-light" href="/admin/cmspage">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="~/admin/pagesscript/ckeditor.js"></script>
+<script src="~/admin/pagesscript/cmspage/addedit.js" asp-append-version="true"></script>

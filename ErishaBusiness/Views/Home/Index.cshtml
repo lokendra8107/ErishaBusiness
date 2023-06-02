@@ -1,11 +1,95 @@
 ﻿@using Microsoft.AspNetCore.Http
 @using ErishaBusiness.Data.DTOS
 
-@model List<BannerLayoutDto>
+@model DashboardHeaderDto
 
 @{
     ViewData["Title"] = "Home Page";
 }
 <section class="w3l-banner-slider-main">
-    @await Component.InvokeAsync("Banner")
+
+    <div class="bannerhny-content">
+        <div class="content-baner-inf">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    @{
+                        var rowIndex = 0;
+                    }
+                    @foreach (var item in Model.BannerLayoutList.Where(x => x.LayoutType == 1))
+                    {
+                        <li data-target="#carouselExampleIndicators" data-slide-to="@(rowIndex)" class="@(rowIndex == 0 ?"active":"")"></li>
+                        rowIndex++;
+                    }
+                </ol>
+                <div class="carousel-inner">
+                    @{
+                        var rowIndex1 = 0;
+                    }
+                    @foreach (var item in Model.BannerLayoutList.Where(x => x.LayoutType == 1))
+                    {
+                        <div class="carousel-item @(rowIndex1 == 0 ?"active":"")" style="background: url('@(item.ImageUrl)?quality=40') no-repeat center;">
+                            <div class="container">
+                                <div class="carousel-caption">
+                                    <h3>
+                                        @(item.Title)
+                                    </h3>
+                                    <a href="#" class="shop-button btn">
+                                        Shop Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        rowIndex1++;
+                    }
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+       @* <div class="right-banner" style="background: url('@(Model.BannerLayoutList.Where(x=>x.LayoutType == 3).Select(x=> x.ImageUrl).FirstOrDefault())?quality=30') no-repeat center;">
+            <div class="right-1">
+                <h4>
+                    @(Model.BannerLayoutList.Where(x => x.LayoutType == 3).Select(x => x.Title).FirstOrDefault())
+                </h4>
+            </div>
+        </div>*@
+    </div>
+
+    <section class="w3l-grids-hny-2">
+        <!-- /content-6-section -->
+        <div class="grids-hny-2-mian py-5">
+            <div class="container py-lg-5">
+                <h3 class="hny-title mb-0 text-center">Shop With <span>Us</span></h3>
+                <p class="mb-4 text-center">Handpicked Favourites just for you</p>
+                <div class="welcome-grids row mt-5">
+                    @foreach (var item in Model.CategoryDtoList.Take(6))
+                    {
+                        <div class="col-lg-2 col-md-4 col-6 welcome-image">
+                            <div class="boxhny13">
+                                <a href="#URL">
+                                    <img src="@(item.ImagePath)?quality=40" class="img-fluid" alt="" />
+                                    <div class="boxhny-content">
+                                        <h3 class="title">@item.CategoryName</h3>
+                                    </div>
+                                </a>
+                            </div>
+                            <h4>
+                                <a href="#URL">
+                                    @item.CategoryName
+                                </a>
+                            </h4>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+
 </section>
+

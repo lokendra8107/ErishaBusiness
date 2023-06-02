@@ -32,6 +32,12 @@
 
         public const string GetAllItemModifiedDate = "GetAllItemModifiedDate";
 
-        
+        public const string DeleteCmsPageById = "DeleteCmsPageById";
+        public const string GetAllCmsPageList = "GetAllCmsPageList";
+        public const string GetAllCmsPages = "GetAllCmsPages";
+        public const string InsertUpdateCmsPage = "InsertUpdateCmsPage";
+
+        public const string UpdateSiteSetting = "UpdateSiteSetting";
+        public const string GetSiteSettingById = "GetSiteSettingById";
     }
 }

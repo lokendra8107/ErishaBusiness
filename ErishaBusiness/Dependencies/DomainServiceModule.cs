@@ -38,6 +38,10 @@ namespace ErishaBusiness.Dependencies
             builder.RegisterType<EmailTemplateService>().As<IEmailTemplateService>();
             builder.RegisterType<BannerLayoutRepository>().As<IBannerLayoutRepository>();
             builder.RegisterType<BannerLayoutService>().As<IBannerLayoutService>();
+            builder.RegisterType<CmsPageRepository>().As<ICmsPageRepository>();
+            builder.RegisterType<CmsPageService>().As<ICmsPageService>();
+            builder.RegisterType<SiteSettingRepository>().As<ISiteSettingRepository>();
+            builder.RegisterType<SiteSettingService>().As<ISiteSettingService>();
         }
     }
 }

@@ -20,7 +20,6 @@ namespace ErishaBusiness.Controllers
         readonly ICategoryService _categoryService;
         readonly IVoucherService _voucherService;
         private readonly IMemoryCache _memoryCache;
-
         public HomeController(IBannerLayoutService bannerLayoutService,
               IMemoryCache memoryCache,
               ICategoryService categoryService,
@@ -36,23 +35,36 @@ namespace ErishaBusiness.Controllers
         {
             CheckDeviceInfo();
             AllRecordDateModifiedDetailDto objItem = new AllRecordDateModifiedDetailDto();
-            HeaderDetailDto objHeader = new HeaderDetailDto();
             objItem = _bannerLayoutService.GetAllRecordDateModifiedDetail();
-
-            var cacheKey = "bannerLayoutList" + objItem.BannerLayoutModified;
-            if (!_memoryCache.TryGetValue(cacheKey, out List<BannerLayoutDto> objBannerLayout))
+            DashboardHeaderDto objDashboard = new DashboardHeaderDto();
+            var cacheKey = "homebannerlayout" + objItem.BannerLayoutModified;
+            if (!_memoryCache.TryGetValue(cacheKey, out List<BannerLayoutListDto> objBanners))
             {
-                objBannerLayout = new List<BannerLayoutDto>();
-                objBannerLayout = _bannerLayoutService.GetAll(0,0,1000,"","","").Result.BannerLayouts;
-                objBannerLayout.ForEach(x => x.ImageUrl = SiteKeys.AssetsDomain + x.ImageUrl);
+                objBanners = new List<BannerLayoutListDto>();
+                objBanners = _bannerLayoutService.GetAllBannerLayout().Result.ToList();
+                objBanners.ForEach(x => x.ImageUrl = SiteKeys.AssetsDomain + x.ImageUrl);
                 var cacheExpiryOptions = new MemoryCacheEntryOptions
                 {
                     Priority = CacheItemPriority.Normal
                 };
-                _memoryCache.Set(cacheKey, objBannerLayout, cacheExpiryOptions);
+                _memoryCache.Set(cacheKey, objBanners, cacheExpiryOptions);
             }
 
-            return View(objBannerLayout);
+            var headerbannerCategoriesKey = "homebannerCategories" + objItem.CategoryModified;
+            if (!_memoryCache.TryGetValue(headerbannerCategoriesKey, out List<CategoryDto> objCategory))
+            {
+                objCategory = new List<CategoryDto>();
+                objCategory = _categoryService.GetAllCategoriesList().Result.ToList();
+                objCategory.ForEach(x => x.ImagePath = SiteKeys.AssetsDomain + x.ImagePath);
+                var cacheExpiryOptions = new MemoryCacheEntryOptions
+                {
+                    Priority = CacheItemPriority.Normal
+                };
+                _memoryCache.Set(headerbannerCategoriesKey, objBanners, cacheExpiryOptions);
+            }
+            objDashboard.BannerLayoutList = objBanners;
+            objDashboard.CategoryDtoList = objCategory;
+            return View(objDashboard);
         }
 
         public void CheckDeviceInfo()
