@@ -1,0 +1,295 @@
+﻿@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+@model ErishaBusiness.Data.DTOS.ProductDetailDto;
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Edit Product</h4>
+            <form id="ProductForm" class="form-sample" method="post" enctype="multipart/form-data" asp-controller="product" asp-action="saveproductdata">
+                <div class="row" style="border: 1px solid #ede3e3;  padding: 5px; margin: 10px;">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-12 col-form-label">Product Image</label>
+                            <input type="file" name="ImageUpload" id="ImageUpload" onchange="ShowPreview(this)" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <img id="ProductPreviewImage" style="width: 200px; height: 220px; border: 5px solid #ede3e3; padding: 3px;" src="@(Model.ProductImage)" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="border: 1px solid #ede3e3;  padding: 5px; margin: 10px;">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-12 col-form-label">Other Product Image</label>
+                            <input type="file" name="OtherProductImageUpload" id="OtherProductImageUpload" onchange="ShowMultiFilePreview(this)" multiple />
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group row productImageItem">
+                            @if (Model.ProductImageItem != null)
+                            {
+                                @foreach (var item in Model.ProductImageItem)
+                                {
+                                    <div class="col-md-3 imageItems_@(item.Id)">
+                                        <img style="width: 200px; height: 220px; border: 5px solid #ede3e3; padding: 3px;margin:5px" src="@(item.ProductImageUrl)" />
+                                        <i class="mdi mdi-close-circle text-primary imagecloseicon" onclick="DeleteProductImage(@(item.Id))"></i>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="SizeChart" />
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Product Name</label>
+                            <div class="col-sm-9 inputfieldValidateItem">
+                                <input type="text" class="form-control inputfieldValidate" asp-for="ProductName" />
+                                <span class="reuiredValidateMessage">*Product Name is required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Category</label>
+                            <div class="col-sm-9 inputfieldValidateItem">
+                                <select class="form-control inputfieldValidate" style="padding: 16px;" asp-for="CategoryId">
+                                    <option value="">Select Category</option>
+                                    @foreach (var items in @ViewBag.Categories)
+                                    {
+                                        <option value="@(items.Id)">@(items.CategoryName)</option>
+                                    }
+                                </select>
+                                <span class="reuiredValidateMessage">*Category is required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Material Name</label>
+                            <div class="col-sm-9 inputfieldValidateItem">
+                                <input type="text" class="form-control inputfieldValidate" asp-for="MaterialName" />
+                                <span class="reuiredValidateMessage">*Material Name is required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Product Type</label>
+                            <div class="col-sm-9" style="margin-top: 15px;">
+                                <label for="NewArrival" style="font-size: 20px;">
+                                    <input type="checkbox" class="" asp-for="NewArrival" /> New Arrival
+                                </label>
+                                &nbsp; <label for="BestSelling" style="font-size: 20px;">
+                                    <input type="checkbox" class="" asp-for="BestSelling" /> Best Selling
+                                </label>
+                                &nbsp; <label for="TopBrand" style="font-size: 20px;">
+                                    <input type="checkbox" class="" asp-for="TopBrand" /> Top Brand
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">SKU Id</label>
+                            <div class="col-sm-9 inputfieldValidateItem">
+                                <input type="text" class="form-control inputfieldValidate" asp-for="SKUId" />
+                                <span class="reuiredValidateMessage">*SKU Id is required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Quantity</label>
+                            <div class="col-sm-9 inputfieldValidateItem">
+                                <input type="number" class="form-control inputfieldValidate" asp-for="Quantity" />
+                                <span class="reuiredValidateMessage">*Quantity is required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Size Chart</label>
+                            <div class="col-sm-9 sizechartValidation" style="margin-top: 15px;">
+                                <label for="SizeChart_S" style="font-size: 20px;">
+                                    <input type="checkbox" class="" Id="SizeChart_S" data-value="S" onchange="SizeChartValidation(false)" /> S
+                                </label>
+                                &nbsp;  <label for="SizeChart_M" style="font-size: 20px;">
+                                    <input type="checkbox" class="" Id="SizeChart_M" data-value="M" onchange="SizeChartValidation(false)" /> M
+                                </label>
+                                &nbsp;  <label for="SizeChart_L" style="font-size: 20px;">
+                                    <input type="checkbox" class="" Id="SizeChart_L" data-value="L" onchange="SizeChartValidation(false)" /> L
+                                </label>
+                                &nbsp;  <label for="SizeChart_XL" style="font-size: 20px;">
+                                    <input type="checkbox" class="" Id="SizeChart_XL" data-value="XL" onchange="SizeChartValidation(false)" /> XL
+                                </label>
+                                &nbsp;  <label for="SizeChart_XXL" style="font-size: 20px;">
+                                    <input type="checkbox" class="" Id="SizeChart_XXL" data-value="XXL" onchange="SizeChartValidation(false)" /> XXL
+                                </label>
+                                <br />
+                                <span class="sizechartValidationMessage commonvalidation ">*Size Chart is required</span>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Product Color</label>
+                            <div class="col-sm-9 inputfieldValidateItem">
+                                <input type="text" class="form-control inputfieldValidate" asp-for="ProductColor" />
+                                <span class="reuiredValidateMessage">*Product Color is required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Product Breadth</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" asp-for="ProductBreadth" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Product Height</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" asp-for="ProductHeight" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Product Weight</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" asp-for="ProductWeight" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Product Combo Set</label>
+                            <div class="col-sm-9 inputfieldValidateItem">
+                                <input type="number" class="form-control inputfieldValidate" asp-for="ProductComboSet" />
+                                <span class="reuiredValidateMessage">*Product Combo Set is required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Product Price</label>
+                            <div class="col-sm-9 inputfieldValidateItem">
+                                <input type="number" class="form-control inputfieldValidate" asp-for="ProductPrice" />
+                                <span class="reuiredValidateMessage">*Product Price is required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">S Size Product Price</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" asp-for="ProductPrice_S" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">M Size Product Price</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" asp-for="ProductPrice_M" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">L Size Product Price</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" asp-for="ProductPrice_L" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">XL Size Product Price</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" asp-for="ProductPrice_XL" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">XXL Size Product Price</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" asp-for="ProductPrice_XXL" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Product Price For Combo</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" asp-for="ProductPrice_Combo" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Active</label>
+                            <div class="col-sm-9" style="margin-top: 15px;">
+                                <label for="IsActive" style="font-size: 20px;">
+                                    <input type="checkbox" class="form-check-input" asp-for="IsActive" />
+                                    <span style="margin-top: 3px; float: right; margin-left: 5px;">IsActive</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Meta Title</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" asp-for="MetaTitle"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Meta Keyword</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" asp-for="MetaKeyword"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Meta Description</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" asp-for="MetaDescription"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-6 col-form-label">Description</label>
+                            <div class="col-sm-12">
+                                <textarea id="editor" asp-for="Description" class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-primary me-2 saveProductbtn" onclick="SaveProductData()">Submit</button>
+                <a class="btn btn-light" href="/admin/Product">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="~/admin/pagesscript/ckeditor.js"></script>
+<script src="~/admin/pagesscript/product/addedit.js" asp-append-version="true"></script>

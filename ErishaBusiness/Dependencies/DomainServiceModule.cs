@@ -42,6 +42,8 @@ namespace ErishaBusiness.Dependencies
             builder.RegisterType<CmsPageService>().As<ICmsPageService>();
             builder.RegisterType<SiteSettingRepository>().As<ISiteSettingRepository>();
             builder.RegisterType<SiteSettingService>().As<ISiteSettingService>();
+            builder.RegisterType<ProductRepository>().As<IProductRepository>();
+            builder.RegisterType<ProductService>().As<IProductService>();
         }
     }
 }

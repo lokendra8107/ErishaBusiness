@@ -13128,15 +13128,15 @@ fieldset:disabled .btn {
 }
 
 .card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
-  background-color: #fff;
-  background-clip: border-box;
-  border: 1px solid #e7eaed;
-  border-radius: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #e7eaed;
+    border-radius: 0;
 }
 
 .card > hr {
@@ -21614,16 +21614,16 @@ code {
 }
 
 .form-control, .dataTables_wrapper select {
-  border: 1px solid #f3f3f3;
-  font-weight: 400;
-  font-size: 0.875rem;
+    border: 1px solid #c2c1c1;
+    font-weight: 400;
+    font-size: 0.875rem;
 }
 
 select.form-control, .dataTables_wrapper select {
-  padding: .4375rem .75rem;
-  border: 0;
-  outline: 1px solid #f3f3f3;
-  color: #c9c8c8;
+    padding: .4375rem .75rem;
+    border: 0;
+    outline: 1px solid #c2c1c1;
+    color: #c9c8c8;
 }
 
 select.form-control:focus, .dataTables_wrapper select:focus {
@@ -23188,3 +23188,33 @@ dl li {
 }
 
 /*# sourceMappingURL=maps/style.css.map */
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.commonvalidation {
+    color: #9f0b02;
+    display: none;
+    font-size: 12px;
+}
+.fieldValidate {
+    border: 1px solid #9f0b02;
+}
+.imagecloseicon {
+    z-index: 999 !important;
+    position: absolute;
+    margin-left: -13px;
+    font-size: 25px;
+    margin-top: -6px;
+    cursor: pointer;
+    color: #000 !important;
+}

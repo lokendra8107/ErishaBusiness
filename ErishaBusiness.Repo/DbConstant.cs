@@ -39,5 +39,13 @@
 
         public const string UpdateSiteSetting = "UpdateSiteSetting";
         public const string GetSiteSettingById = "GetSiteSettingById";
+
+        public const string InsertUpdateProductMaster = "InsertUpdateProductMaster";
+        public const string GetAllProductItem = "GetAllProductItem";
+        public const string DeleteProductById = "DeleteProductById";
+        public const string GetProdutImageItemById = "GetProdutImageItemById";//@Id
+        public const string GetProdutImageItemByProductId = "GetProdutImageItemByProductId";//@ProductId
+        public const string InsertUpdateProdutImages = "InsertUpdateProdutImages";
+        public const string DeleteProdutImageById = "DeleteProdutImageById";
     }
 }
